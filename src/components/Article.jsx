@@ -8,7 +8,7 @@ export default function Article({ article }) {
       <img
         src={article.image}
         alt="Illustration"
-        className="w-full h-auto rounded-md mb-4"
+        className="w-full max-w-xl mx-auto h-auto rounded-md mb-4 object-cover"
       />
       <p className="text-gray-800">{article.content}</p>
     </article>
