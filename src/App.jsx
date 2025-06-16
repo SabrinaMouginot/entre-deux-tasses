@@ -1,12 +1,9 @@
 import './App.css'
+import Home from "./pages/Home";
 
 function App() {
-
-  return (
-    <div className="p-6 text-2xl text-blue-500">
-      Hello depuis Tailwind
-    </div>
-  );
+  return <Home />;
 }
 
-export default App
+export default App;
+
