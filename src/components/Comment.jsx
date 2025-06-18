@@ -1,11 +1,33 @@
+import { useState } from "react";
+
 export default function Comment() {
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!comment.trim()) return;
+    setComments((prev) => [...prev, comment.trim()]);
+    setComment("");
+  };
 
   return (
     <div className="mt-6">
+      {/* Liste des commentaires */}
+      {comments.length > 0 && (
+        <div className="mb-4 space-y-2">
+          <h3 className="text-sm font-semibold">Pseudo</h3>
+            {comments.map((c, index) => (
+              <p key={index} className="list-disc list-inside text-sm text-gray-700">{c}</p>
+            ))}
+        </div>
+      )}
 
       {/* Formulaire de commentaire */}
-      <form className="space-y-2">
+      <form onSubmit={handleSubmit} className="space-y-2">
         <textarea
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
           placeholder="Votre commentaire..."
           className="w-full p-2 border border-gray-300 rounded h-20"
         />
