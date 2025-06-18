@@ -3,13 +3,25 @@ import Header from "../components/Header";
 import Article from "../components/Article";
 import Footer from "../components/Footer";
 import NewArticleModal from "../components/NewArticleModal";
-import { articles } from "../data/articles";
+import { articles as initialArticles } from "../data/articles";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
-  const sortedArticles = articles.sort(
+
+  const [articleList, setArticleList] = useState(initialArticles);
+
+  const handleAddArticle = (newArticle) => {
+    setArticleList((prev) => [...prev, newArticle]);
+    setShowModal(false);
+  };
+
+  const sortedArticles = [...articleList].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
+
+  // const sortedArticles = articles.sort(
+  //   (a, b) => new Date(b.date) - new Date(a.date)
+  // );
 
   return (
     <>
@@ -43,7 +55,7 @@ export default function Home() {
       <Footer />
 
       {/* Modale */}
-      {showModal && <NewArticleModal onClose={() => setShowModal(false)} />}
+      {showModal && <NewArticleModal onClose={() => setShowModal(false)} onPublish={handleAddArticle} />}
     </>
   );
 }
