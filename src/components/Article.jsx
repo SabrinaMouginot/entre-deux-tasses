@@ -1,3 +1,5 @@
+import Comment from "./Comment";
+
 export default function Article({ article }) {
   return (
     <article className="mb-10 pb-6 border-b border-gray-300">
@@ -11,6 +13,9 @@ export default function Article({ article }) {
         className="w-full max-w-xl mx-auto h-auto rounded-md mb-4 object-cover"
       />
       <p className="text-gray-800">{article.content}</p>
+
+      {/* Commentaires */}
+      <Comment />
     </article>
   );
 }
