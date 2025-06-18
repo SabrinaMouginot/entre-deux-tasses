@@ -3,19 +3,21 @@ import { useState } from "react";
 export default function NewArticleModal({ onClose, onPublish }) {
   // const [,] = useState("image");
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
+  // const [date, setDate] = useState("");
   const [file, setFile] = useState(null);
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !date || !file || !content) return;
+    if (!title || 
+      // !date || 
+      !file || !content) return;
 
     const newArticle = {
       id: Date.now(),
       title,
-      date,
+      date:  new Date().toISOString(),
       image: URL.createObjectURL(file),
       content,
     };
@@ -38,12 +40,12 @@ export default function NewArticleModal({ onClose, onPublish }) {
             className="w-full p-2 border border-gray-300 rounded"
           />
 
-          <input
+          {/* <input
             type="datetime-local"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded"
-          />
+          /> */}
 
           <input
             type="file"
