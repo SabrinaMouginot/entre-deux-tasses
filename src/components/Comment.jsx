@@ -18,7 +18,7 @@ export default function Comment() {
         <div className="mb-4">
           <h3 className="text-sm font-semibold">Pseudo</h3>
             {comments.map((c, index) => (
-              <p key={index} className="list-disc list-inside text-sm text-gray-700">{c}</p>
+              <p key={index} className="list-disc list-inside text-sm text-gray-700 break-words">{c}</p>
             ))}
         </div>
       )}
