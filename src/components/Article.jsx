@@ -1,4 +1,5 @@
 import Comment from "./Comment";
+import Reactions from "./Reactions";
 
 export default function Article({ article }) {
   return (
@@ -14,7 +15,7 @@ export default function Article({ article }) {
       />
       <p className="text-gray-800">{article.content}</p>
 
-      {/* Commentaires */}
+      <Reactions />
       <Comment />
     </article>
   );
