@@ -1,23 +1,20 @@
 import { useState } from "react";
 
 export default function NewArticleModal({ onClose, onPublish }) {
-  // const [,] = useState("image");
   const [title, setTitle] = useState("");
-  // const [date, setDate] = useState("");
   const [file, setFile] = useState(null);
   const [content, setContent] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || 
-      // !date || 
+    if (!title ||
       !file || !content) return;
 
     const newArticle = {
       id: Date.now(),
       title,
-      date:  new Date().toISOString(),
+      date: new Date().toISOString(),
       image: URL.createObjectURL(file),
       content,
     };
@@ -34,18 +31,10 @@ export default function NewArticleModal({ onClose, onPublish }) {
           <input
             type="text"
             placeholder="Titre"
-            // className="w-full p-2 border border-gray-300 rounded"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded"
           />
-
-          {/* <input
-            type="datetime-local"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
-          /> */}
 
           <input
             type="file"

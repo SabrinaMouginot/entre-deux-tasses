@@ -16,9 +16,7 @@ export default function Reactions() {
 
     setReactions((prev) => ({
       ...prev,
-      [emoji]: prev[emoji] +
-        // 1,
-        (alreadyClicked ? -1 : 1),
+      [emoji]: prev[emoji] + (alreadyClicked ? -1 : 1),
     }));
 
     setClicked((prev) => ({
