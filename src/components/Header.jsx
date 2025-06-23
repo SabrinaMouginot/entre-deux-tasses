@@ -28,7 +28,6 @@ function Header({ onSearch }) {
           type="text"
           placeholder="Rechercher un article..."
           value={searchInput}
-          // onChange={(e) => onSearch(e.target.value)}
           onChange={(e) => setSearchInput(e.target.value)}
           onKeyDown={handleKeyDown}
           className="w-full max-w-md p-3 rounded-lg text-black shadow"

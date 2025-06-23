@@ -24,10 +24,6 @@ export default function Home() {
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
-  // const sortedArticles = [...articleList].sort(
-  //   (a, b) => new Date(b.date) - new Date(a.date)
-  // );
-
   return (
     <>
       <Header onSearch={setSearchTerm} />
