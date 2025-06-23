@@ -8,19 +8,19 @@ import { articles as initialArticles } from "../data/articles";
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [articleList, setArticleList] = useState(initialArticles);
-    const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleAddArticle = (newArticle) => {
     setArticleList((prev) => [...prev, newArticle]);
     setShowModal(false);
   };
 
-    const filteredArticles = articleList.filter((article) =>
+  const filteredArticles = articleList.filter((article) =>
     article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     article.content.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-    const sortedArticles = [...filteredArticles].sort(
+  const sortedArticles = [...filteredArticles].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
