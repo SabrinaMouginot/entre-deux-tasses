@@ -6,6 +6,7 @@ function Header({ onSearch }) {
 
   const handleSearch = () => {
     onSearch(searchInput);
+    setSearchInput("");
   };
 
   const handleKeyDown = (e) => {
