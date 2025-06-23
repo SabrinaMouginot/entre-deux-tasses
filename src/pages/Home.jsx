@@ -7,21 +7,30 @@ import { articles as initialArticles } from "../data/articles";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
-
   const [articleList, setArticleList] = useState(initialArticles);
+    const [searchTerm, setSearchTerm] = useState("");
 
   const handleAddArticle = (newArticle) => {
     setArticleList((prev) => [...prev, newArticle]);
     setShowModal(false);
   };
 
-  const sortedArticles = [...articleList].sort(
+    const filteredArticles = articleList.filter((article) =>
+    article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    article.content.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+    const sortedArticles = [...filteredArticles].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
+  // const sortedArticles = [...articleList].sort(
+  //   (a, b) => new Date(b.date) - new Date(a.date)
+  // );
+
   return (
     <>
-      <Header />
+      <Header onSearch={setSearchTerm} />
 
       {/* Bouton + */}
       <div className="flex justify-end items-center px-4 mt-4">

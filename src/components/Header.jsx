@@ -1,4 +1,4 @@
-function Header() {
+function Header({ onSearch }) {
   return (
     <header
       className="h-[500px] bg-cover bg-center flex flex-col items-center justify-center text-white text-center px-4"
@@ -9,6 +9,7 @@ function Header() {
       <input
         type="text"
         placeholder="Rechercher un article..."
+                onChange={(e) => onSearch(e.target.value)}
         className="w-full max-w-md p-3 rounded-lg text-black shadow"
       />
     </header>
