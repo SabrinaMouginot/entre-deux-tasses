@@ -8,16 +8,35 @@ import { articles as initialArticles } from "../data/articles";
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [articleList, setArticleList] = useState(initialArticles);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
+    const [searchTags, setSearchTags] = useState([]);
 
   const handleAddArticle = (newArticle) => {
     setArticleList((prev) => [...prev, newArticle]);
     setShowModal(false);
   };
 
+    const addTag = (tag) => {
+    if (!tag.trim() || searchTags.includes(tag.trim().toLowerCase())) return;
+    setSearchTags((prev) => [...prev, tag.trim().toLowerCase()]);
+  };
+
+  const removeTag = (tag) => {
+    setSearchTags((prev) => prev.filter((t) => t !== tag));
+  };
+
+
+  // const filteredArticles = articleList.filter((article) =>
+  //   article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //   article.content.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
+
   const filteredArticles = articleList.filter((article) =>
-    article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    article.content.toLowerCase().includes(searchTerm.toLowerCase())
+    searchTags.every(
+      (tag) =>
+        article.title.toLowerCase().includes(tag) ||
+        article.content.toLowerCase().includes(tag)
+    )
   );
 
   const sortedArticles = [...filteredArticles].sort(
@@ -26,7 +45,24 @@ export default function Home() {
 
   return (
     <>
-      <Header onSearch={setSearchTerm} />
+      {/* <Header onSearch={setSearchTerm} /> */}
+
+      <Header onAddTag={addTag} />
+
+      {/* Zone des tags */}
+      <div className="flex flex-wrap gap-2 px-4 mt-4">
+        {searchTags.map((tag) => (
+          <div key={tag} className="flex items-center bg-gray-200 px-3 py-1 rounded-full text-sm">
+            <span>{tag}</span>
+            <button
+              onClick={() => removeTag(tag)}
+              className="ml-2 text-gray-500 hover:text-gray-700"
+            >
+              ✖
+            </button>
+          </div>
+        ))}
+      </div>
 
       {/* Bouton + */}
       <div className="flex justify-end items-center px-4 mt-4">
