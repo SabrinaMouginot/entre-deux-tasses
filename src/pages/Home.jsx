@@ -8,7 +8,6 @@ import { articles as initialArticles } from "../data/articles";
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [articleList, setArticleList] = useState(initialArticles);
-  // const [searchTerm, setSearchTerm] = useState("");
     const [searchTags, setSearchTags] = useState([]);
 
   const handleAddArticle = (newArticle) => {
@@ -25,12 +24,6 @@ export default function Home() {
     setSearchTags((prev) => prev.filter((t) => t !== tag));
   };
 
-
-  // const filteredArticles = articleList.filter((article) =>
-  //   article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //   article.content.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
-
   const filteredArticles = articleList.filter((article) =>
     searchTags.every(
       (tag) =>
@@ -45,8 +38,6 @@ export default function Home() {
 
   return (
     <>
-      {/* <Header onSearch={setSearchTerm} /> */}
-
       <Header onAddTag={addTag} />
 
       {/* Zone des tags */}
