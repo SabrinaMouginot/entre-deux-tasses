@@ -8,14 +8,14 @@ import { articles as initialArticles } from "../data/articles";
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [articleList, setArticleList] = useState(initialArticles);
-    const [searchTags, setSearchTags] = useState([]);
+  const [searchTags, setSearchTags] = useState([]);
 
   const handleAddArticle = (newArticle) => {
     setArticleList((prev) => [...prev, newArticle]);
     setShowModal(false);
   };
 
-    const addTag = (tag) => {
+  const addTag = (tag) => {
     if (!tag.trim() || searchTags.includes(tag.trim().toLowerCase())) return;
     setSearchTags((prev) => [...prev, tag.trim().toLowerCase()]);
   };
@@ -40,8 +40,8 @@ export default function Home() {
     <>
       <Header onAddTag={addTag} />
 
-      {/* Zone des tags */}
-      <div className="flex flex-wrap gap-2 px-4 mt-4">
+      {/* Zone des tags fixe sous le Header */}
+      <div className="bg-white w-full flex flex-wrap gap-2 px-4 py-3 border-b border-gray-200 min-h-[48px]">
         {searchTags.map((tag) => (
           <div key={tag} className="flex items-center bg-gray-200 px-3 py-1 rounded-full text-sm">
             <span>{tag}</span>
