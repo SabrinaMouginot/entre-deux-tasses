@@ -16,14 +16,13 @@ export default function Article({ article }) {
       <p className="text-sm text-gray-500 mb-4">
         {new Date(article.date).toLocaleString()}
       </p>
-      <p className="text-xs text-gray-400 mb-4">{views} impressions</p>
+      <p className="text-gray-800 mb-4">{article.content}</p>
       <img
         src={article.image}
         alt="Illustration"
         className="w-full max-w-xl mx-auto h-auto rounded-md mb-4 object-cover"
       />
-      <p className="text-gray-800">{article.content}</p>
-
+      <p className="text-xs text-gray-400 mb-4">{views} impressions</p>
       <Reactions />
       <Comment />
     </article>
