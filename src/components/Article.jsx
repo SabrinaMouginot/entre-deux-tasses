@@ -1,6 +1,7 @@
 import Comment from "./Comment";
 import Reactions from "./Reactions";
 import { useEffect, useState } from "react";
+import ImpressionCounter from "./ImpressionCounter";
 
 export default function Article({ article }) {
   const [views, setViews] = useState(0);
@@ -22,7 +23,8 @@ export default function Article({ article }) {
         alt="Illustration"
         className="w-full max-w-xl mx-auto h-auto rounded-md mb-4 object-cover"
       />
-      <p className="text-xs text-gray-400 mb-4">{views} impressions</p>
+
+      <ImpressionCounter count={views} />
       <Reactions />
       <Comment />
     </article>
