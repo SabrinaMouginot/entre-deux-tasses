@@ -18,10 +18,16 @@ function App() {
     localStorage.setItem("blog_user", JSON.stringify(userData));
   };
 
+const handleLogout = () => {
+  setUser(null);
+  localStorage.removeItem("blog_user");
+};
+
+
   return (
     <>
       {user ? (
-        <Home user={user} />
+        <Home user={user} onLogout={handleLogout} />
       ) : (
         <Login onLogin={handleLogin} />
       )}
