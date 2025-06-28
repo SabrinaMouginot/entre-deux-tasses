@@ -6,7 +6,7 @@ import NewArticleModal from "../components/NewArticleModal";
 import { articles as initialArticles } from "../data/articles";
 import TagList from "../components/TagList";
 
-export default function Home({ user }) {
+export default function Home({ user, onLogout }) {
   const [showModal, setShowModal] = useState(false);
   const [articleList, setArticleList] = useState(initialArticles);
   const [searchTags, setSearchTags] = useState([]);
@@ -41,7 +41,7 @@ export default function Home({ user }) {
 
   return (
     <>
-      <Header onAddTag={addTag} />
+      <Header onAddTag={addTag} onLogout={onLogout} />
 
       {/* Zone des tags fixe sous le Header */}
       <TagList tags={searchTags} removeTag={removeTag} />

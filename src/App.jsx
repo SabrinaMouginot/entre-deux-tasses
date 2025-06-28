@@ -18,10 +18,10 @@ function App() {
     localStorage.setItem("blog_user", JSON.stringify(userData));
   };
 
-const handleLogout = () => {
-  setUser(null);
-  localStorage.removeItem("blog_user");
-};
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("blog_user");
+  };
 
 
   return (
