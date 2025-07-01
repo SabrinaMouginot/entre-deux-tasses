@@ -2,7 +2,7 @@ import { useState } from "react";
 import SearchBar from "./SearchBar";
 // import onLogout from "../pages/Home";
 
-export default function Header({ onAddTag, onLogout }) {
+export default function Header({ onAddTag, onLogin, onLogout, user }) {
   const [searchInput, setSearchInput] = useState("");
 
   const handleAdd = () => {
@@ -16,12 +16,21 @@ export default function Header({ onAddTag, onLogout }) {
       style={{ backgroundImage: "url('/bg_header.png')" }}
     >
       <div className="absolute top-4 right-4">
-        <button
-          onClick={onLogout}
-          className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 text-sm"
-        >
-          Déconnexion
-        </button>
+        {user ? (
+          <button
+            onClick={onLogout}
+            className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 text-sm"
+          >
+            Déconnexion
+          </button>
+        ) : (
+          <button
+            onClick={onLogin}
+            className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 text-sm"
+          >
+            Connexion
+          </button>
+        )}
       </div>
 
       <h1 className="text-5xl font-bold mb-2 drop-shadow-lg">Entre deux tasses</h1>
