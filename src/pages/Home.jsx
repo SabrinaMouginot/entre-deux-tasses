@@ -6,7 +6,7 @@ import NewArticleModal from "../components/NewArticleModal";
 import { articles as initialArticles } from "../data/articles";
 import TagList from "../components/TagList";
 
-export default function Home({ user, onLogout }) {
+export default function Home({ user, onLogin, onLogout }) {
   const [showModal, setShowModal] = useState(false);
   const [articleList, setArticleList] = useState(initialArticles);
   const [searchTags, setSearchTags] = useState([]);
@@ -41,7 +41,7 @@ export default function Home({ user, onLogout }) {
 
   return (
     <>
-      <Header onAddTag={addTag} onLogout={onLogout} />
+      <Header onAddTag={addTag} onLogin={onLogin} onLogout={onLogout} user={user} />
 
       {/* Zone des tags fixe sous le Header */}
       <TagList tags={searchTags} removeTag={removeTag} />
@@ -66,7 +66,8 @@ export default function Home({ user, onLogout }) {
       <main className="max-w-3xl mx-auto px-4 py-8">
         {/* Liste des articles */}
         {sortedArticles.map((article) => (
-          <Article key={article.id} article={article} />
+          <Article key={article.id} article={article} user={user}
+            onLogin={onLogin} />
         ))}
       </main>
 
