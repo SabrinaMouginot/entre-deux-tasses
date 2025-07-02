@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import './App.css'
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -7,22 +7,22 @@ function App() {
   const [user, setUser] = useState(null);
   const [showLogin, setShowLogin] = useState(false);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("blog_user");
-    if (saved) {
-      setUser(JSON.parse(saved));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const saved = localStorage.getItem("blog_user");
+  //   if (saved) {
+  //     setUser(JSON.parse(saved));
+  //   }
+  // }, []);
 
   const handleLogin = (userData) => {
     setUser(userData);
-    localStorage.setItem("blog_user", JSON.stringify(userData));
+    // localStorage.setItem("blog_user", JSON.stringify(userData));
     setShowLogin(false);
   };
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.removeItem("blog_user");
+    // localStorage.removeItem("blog_user");
   };
 
 
