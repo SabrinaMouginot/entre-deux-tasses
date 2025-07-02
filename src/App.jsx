@@ -19,11 +19,16 @@ function App() {
 
   return (
     <>
-      <Home user={user} onLogin={() => setShowLogin(true)} onLogout={handleLogout} />
-      {showLogin && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      {showLogin ? (
+        <div className="fixed inset-0 bg-white flex items-center justify-center z-50">
           <Login onLogin={handleLogin} />
         </div>
+      ) : (
+        <Home
+          user={user}
+          onLogin={() => setShowLogin(true)}
+          onLogout={handleLogout}
+        />
       )}
     </>
   );
