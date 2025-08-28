@@ -1,4 +1,4 @@
-Les 2 repositories : Backend et Base de données sont en privé. 
+LES 2 REPOSITORIES : BECKEND ET BASE DE DONNEES SONT EN PRIVE .
 
 # React + Vite
 
