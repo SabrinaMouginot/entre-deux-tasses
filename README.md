@@ -1,3 +1,5 @@
+Les 2 repositories : Backend et Base de données sont en privé. 
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
